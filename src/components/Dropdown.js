@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-const Dropdown = ({ options, selected, onSelectedChange }) => {
+const Dropdown = ({ label, options, selected, onSelectedChange }) => {
   const [open, setOpen] = useState(false);
   const ref = useRef();
 
   useEffect(() => {
-    const onBodyClick = (event) => {
-      if (ref.current.contains(event.target)){
+    const onBodyClick = event => {
+      if (ref.current.contains(event.target)) {
         return;
       }
       setOpen(false);
@@ -22,7 +22,7 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
   const renderedOptions = options.map(option => {
     // if (option.value === selected.value) {
     //   return null;
-    // }
+    // } // this is bad usability so not using
 
     return (
       <div
@@ -35,13 +35,13 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
       </div>
     );
   });
-  
+
   return (
     <div>
       <div ref={ref} className='ui form'>
         <div className='field'>
-          <label htmlFor='' className='label'>
-            Select a color
+          <label htmlFor='label' className='label'>
+            {label}
           </label>
 
           <div
