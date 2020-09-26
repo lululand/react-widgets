@@ -20,10 +20,6 @@ const Dropdown = ({ label, options, selected, onSelectedChange }) => {
   }, []);
 
   const renderedOptions = options.map(option => {
-    // if (option.value === selected.value) {
-    //   return null;
-    // } // this is bad usability so not using
-
     return (
       <div
         key={option.value}
